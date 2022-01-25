@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+  <meta charset="utf-8">
+  <title>Camino Frøs Herred - Vandretur i det gamle Frøs Herred</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Vandreruten tager udgangspunkt i de 10 kirker i det gamle Frøs Herred, og har fokus på lokalhistorien, herunder genforeningens betydning for lokalområdet.">
+  <meta name="keywords"
+    content="camino Danmark, Frøs Herred, vandretur, vandretur i Danmark, Camino Frøs Herred, Danmarks genforening">
+  <!---Meyers reset css-->
+  <link rel="stylesheet" href="reset.css">
+
+
+  <!---External css and script-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+  <script src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+  <!-- Script for leaflet printer-->
+  <script src="node_modules/leaflet.browser.print/dist/leaflet.browser.print.min.js"></script>
+  <!-- css for leaflet clustermarker-->
+  <link rel="stylesheet" href="node_modules/leaflet.markercluster/dist/MarkerCluster.css">
+
+
+  <!-- script for leaflet clustermarker-->
+  <script src="node_modules/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+
+
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="node_modules/leaflet.browser.print/dist/leaflet.browser.print.min.js" />
+
+  <script src="node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
+  <!-- Our css-->
+  <link rel="stylesheet" href="main.css">
+  <link rel="shortcut icon" type="image/png" href="images/favicon/favicon-96x96.png" />
+  <!-- Font-->
+  <link rel="stylesheet" href="https://use.typekit.net/xha6kvj.css">
+
+</head>
+
+
+<body class="app" onhashchange="pageChange()">
+
+  <!-- navigation -->
+  <aside>
+    <nav class="navigationEtape">
+      <img id="logoDark" alt="Camino Frøs Herred Logo" src="images/caminoLogoDark.svg"
+        onclick="scrollToElement('frontpageImage'); zoomOut()">
+      <h3>Etaper</h3>
+      <input type="button" class="navbtn btn" value="1" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="2" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="3" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="4" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="5" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="6" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="7" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="8" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="9" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="10" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <input type="button" class="navbtn btn" value="11" onmouseover="goTo(this.value)" onmouseout="goFrom(this.value)"
+        onclick="chosen(this.value); scrollToStage(this.value)">
+    </nav>
+  </aside>
+  <section id="content"></section>
+
+  <!-- The expanding image container -->
+  <div class="imagePopup">
+    <!-- Close the image -->
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <div class="container">
+
+
+      <!-- Expanded image -->
+      <img id="expandedImg" src="" alt="Forstørret billede" style="max-width:100%">
+
+      <!-- Image text -->
+      <div id="imgtext"></div>
+
+    </div>
+
+  </div>
+
+  <nav class="tabbar">
+    <a href="#home"><img src="images/ikoner/generelt.svg" alt="Kompas nål">Generelt</a>
+    <a href="#mapid"><img src="images/ikoner/kort.svg" alt="Kort logo">Kort</a>
+    <a href="#grid-posts"><img src="images/ikoner/rutebeskrivelser.svg" alt="Lokation logo">Beskrivelse</a>
+  </nav>
+
+  <!-- main js file -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+  <!-- Firebase Firestore (database) JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js"></script>
+  <script src="./js/GPXParser.js"></script>
+  <script src="main.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,1506 @@
+/* ---------- root variables ---------- */
+:root {
+  --camino-green: #22523C;
+  --camino-blue: #002F38;
+  --camino-blue-transpartent: rgba(256, 256, 256, 0.7);
+  --camino-yellow: #d5d822;
+  --text-color-light: #FFF1DD;
+  --background-light: rgb(253, 249, 244);
+  --text-color-dark: #002F38;
+}
+
+/* ---------- general styling ---------- */
+@font-face {
+  font-family: 'JosefinSans';
+  src: url('font/JosefinSans.ttf');
+}
+
+@font-face {
+  font-family: 'JosefinSansItallic';
+  src: url('font/JosefinSans-Italic.ttf');
+}
+
+html {
+  color: var(--text-color-dark);
+  font-family: 'JosefinSans', Arial, sans-serif;
+  height: 100%;
+  text-align: left;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* ---------- font styling ---------- */
+h1,
+h2,
+h3 {
+  font-family: 'abolition-soft', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--text-color-light);
+}
+
+h1 {
+  font-size: 4em;
+  letter-spacing: 3px;
+  letter-spacing: 0.2em;
+}
+
+h2 {
+  font-size: 2.5em;
+  letter-spacing: 0.2em;
+}
+
+h3 {
+  font-size: 2.2em;
+  letter-spacing: 0.2em;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: var(--text-color-light);
+  letter-spacing: 0em;
+  line-height: 1.5em;
+  font-size: .9em;
+}
+
+.descriptionDiv li {
+  list-style: none;
+  list-style-position: outside;
+  margin-left: 12px;
+}
+
+.descriptionDiv {
+  margin: 1% 0 1% 1%;
+}
+
+.descriptionDiv li:before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  background-image: url(images/pil.png);
+  background-position: center;
+  background-size: cover;
+  margin-left: -12px;
+  margin-right: 4px;
+  padding-top: 7px;
+}
+
+
+strong {
+  font-weight: bold;
+}
+
+/* ---------- page styling ---------- */
+.page {
+  display: none;
+  animation: fadeIn 0.4s;
+}
+
+
+
+aside {
+  background-color: var(--camino-blue);
+  text-align: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+}
+
+#content {
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 91)-10vh;
+  overflow: auto;
+  background-color: var(--camino-blue);
+}
+
+
+.none {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.tabNav {
+  list-style: none;
+  color: var(--camino-blue);
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: calc(var(--vh, 1vh) * 1.4);
+  margin-left: 0;
+}
+
+.tabImages {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tabImages img {
+  max-height: 50px;
+  width: auto;
+}
+
+
+
+/* ---------- animations ---------- */
+/* fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+hr {
+  height: .25rem;
+  width: 0%;
+  margin: -1em 0 1em;
+  background: var(--camino-yellow);
+  border: none;
+  transition: .5s ease-in-out;
+}
+
+
+
+/* ---------- loader styling ---------- */
+#loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999999;
+  overflow: hidden;
+  background: var(--camino-green);
+  text-align: center;
+}
+
+.spinner {
+  border: 5px solid var(--text-color-light);
+  border-radius: 50%;
+  border-top: 5px solid var(--camino-green);
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  /* Safari */
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+.flexcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- navigation styling ---------- */
+#logoDark {
+  max-width: 100%;
+  margin: 3vh auto 0;
+  cursor: pointer;
+  display: block;
+}
+
+.navigationEtape {
+  height: calc(var(--vh, 1vh) * 100);
+  width: 10vw;
+}
+
+.navbtn {
+  display: block;
+  width: calc(var(--vh, 1vh) * 4);
+  height: calc(var(--vh, 1vh) * 4);
+  border-radius: 50%;
+  border: 2px solid var(--text-color-light);
+  background-color: var(--text-color-light);
+  color: var(--text-color-dark);
+  margin: calc(var(--vh, 1vh) * 0) auto;
+  font-family: 'abolition-soft';
+  font-size: calc(var(--vh, 1vh) * 2);
+  cursor: pointer;
+}
+
+.navbtn:hover {
+  border: 2px solid var(--camino-yellow);
+}
+
+.navbtn:focus {
+  outline: 0;
+}
+
+.selected {
+  background-color: var(--camino-yellow);
+  stroke: var(--camino-yellow);
+}
+
+.selectedLine {
+  stroke: var(--camino-yellow);
+}
+
+.hoverLine {
+  stroke: var(--camino-yellow);
+}
+
+.navigationEtape span {
+  display: block;
+  width: calc(var(--vh, 1vh) * .3);
+  height: calc(var(--vh, 1vh) * .3);
+  border-radius: 50%;
+  background-color: var(--text-color-light);
+  margin: calc(var(--vh, 1vh) * .3) auto;
+}
+
+
+/* ---------- home page styling ---------- */
+#frontpageImage {
+  background-image: url(images/lake-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 75);
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#frontpageTextDiv {
+  justify-content: start;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#frontpageLogoDiv {
+  width: 70%;
+  margin-left: 15%;
+  margin-top: calc(var(--vh, 1vh) * 4);
+}
+
+#frontpageLogo {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
+#frontpageImage h1 {
+  font-size: calc(var(--vh, 1vh) * 5);
+  font-weight: 100;
+}
+
+#frontpageImage h2 {
+  font-size: calc(var(--vh, 1vh) * 3);
+}
+
+.socialMedia {
+  margin: 0 0 2% 2%;
+}
+
+.socialMedia img {
+  width: 2em;
+  height: 2em;
+}
+
+
+
+
+#frontpageSection {
+  text-align: left;
+  background-color: var(--camino-blue);
+  margin-bottom: calc(var(--vh, 1vh) * 10);
+}
+
+#frontpageSection div {
+  width: 90%;
+  margin: 0 auto 1em;
+}
+
+#frontpageSection img {
+  height: 2em;
+  margin-top: calc(var(--vh, 1vh) * 2);
+}
+
+#frontpageSection h2 {
+  cursor: pointer;
+}
+
+h2 {
+  margin: 2% 0 0 0;
+}
+
+#frontpageSection .arrow {
+  display: none;
+}
+
+
+#frontpageSection .descriptionArrow {
+  right: 0;
+  top: calc(var(--vh, 1vh) * 7);
+  transform: rotate(90deg) scaleY(-1);
+}
+
+#frontpageSection .mapArrow {
+  left: 27vw;
+  top: calc(var(--vh, 1vh) * 7);
+  transform: rotate(90deg);
+}
+
+#frontpageSection .generalArrow {
+  left: 17vw;
+  top: 0;
+  transform: rotate(-60deg);
+}
+
+/* ---------- map ---------- */
+#mapid {
+  height: calc(var(--vh, 1vh) * 90);
+  width: 100vw;
+  position: absolute;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+
+.maparea {
+  position: relative;
+  height: calc(var(--vh, 1vh) * 90);
+  overflow-x: hidden;
+}
+
+#infoBox {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 3px solid var(--camino-blue);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  width: 13em;
+  color: var(--text-color-light);
+  z-index: 5;
+  display: none;
+}
+
+#grid-posts {
+  height: calc(var(--vh, 1vh) * 90);
+  width: 90vw;
+}
+
+aside h3 {
+  font-size: calc(var(--vh, 1vh) * 1.5);
+  margin: calc(var(--vh, 1vh) * 5) 0 calc(var(--vh, 1vh) * 3);
+}
+
+.boxIcon {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.boxIcon input {
+  align-self: center;
+  cursor: pointer;
+  border: none;
+  border-style: none;
+}
+
+.boxIcon p {
+  width: 50%;
+  text-align: left;
+  padding-left: 0.2em;
+  align-self: center;
+}
+
+.boxIcon img {
+  max-width: 15%;
+  height: 15%;
+  overflow: hidden;
+  align-self: center;
+}
+
+/* ---------- crud page styling ---------- */
+.sayArticle {
+  border: 1px solid var(--camino-green);
+  border-radius: 10px;
+  height: auto;
+}
+
+.sayText {
+  margin-left: 10%;
+  width: 80%;
+  font-style: italic;
+  margin: 0 auto;
+}
+
+.sayImage {
+  margin-right: 10%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.sayImage img {
+  width: 100%;
+}
+
+.sayBtn {
+  text-align: center;
+  color: var(--text-color-light);
+  background-color: var(--camino-blue);
+  border-radius: 25px;
+  padding: .5em 2em;
+  margin: 1em auto 0;
+  width: 60%;
+  display: block;
+}
+
+.sayBtn:hover {
+  background-color: var(--camino-green);
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: var(--camino-green);
+  font-size: 12px;
+  padding: 8px 12px;
+  text-align: center;
+  top: 0;
+}
+
+.active {
+  background-color: var(--camino-blue);
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+/* ---------- Grid container styling ---------- */
+.grid-item {
+  border: 7px solid var(--camino-green);
+  border-radius: 25px;
+  background-color: var(--camino-green);
+  margin: 2vw;
+  width: 90%;
+
+}
+
+.dropdown {
+  background-color: var(--background-light);
+  border-radius: 25px;
+  display: none;
+  padding: 6% 5%;
+  color: var(--camino-blue);
+}
+
+.dropdown p {
+  color: var(--camino-blue);
+  margin-top: 1.5%;
+}
+
+.backgroundimg {
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  border-radius: 25px;
+
+  max-width: 100%;
+
+  /* Height untill bodyLoad */
+  height: calc(var(--vh, 1vh) * 30);
+  cursor: pointer;
+}
+
+.title-distance {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.title-distance h3,
+.title-distance h4,
+.start-end h5 {
+  margin: 0;
+  padding: 0 2%;
+  color: var(--text-color-light);
+  width: auto;
+  /* text-transform: uppercase; */
+}
+
+.title-distance h4 {
+  margin-top: 5%;
+}
+
+.title-distance h4,
+.start-end h5 {
+  /* margin-top: 5%; */
+  font-family: 'JosefinSans', Arial, sans-serif;
+}
+
+.title-distance h4 {
+  margin-top: 5%;
+}
+
+.start-end {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--text-color-light);
+  padding-bottom: 2%;
+}
+
+#text-backgroundimg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(25, 57, 42, 0.8);
+  border-radius: 0 0 24px 24px;
+}
+
+.gpx {
+  text-align: center;
+  color: var(--text-color-light);
+  background-color: var(--camino-blue);
+  border-radius: 25px;
+  padding: .5em 2em;
+  margin: 1em auto 0;
+  width: 60%;
+  display: block;
+}
+
+.gpx:hover {
+  /* color: var(--camino-yellow); */
+  background-color: var(--camino-green);
+}
+
+.dropdown .zoom {
+  text-align: center;
+  color: var(--text-color-light);
+  background-color: var(--camino-blue);
+  border-radius: 25px;
+  width: 50%;
+  margin-bottom: 1em;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  /* color: var(--camino-yellow); */
+  background-color: var(--camino-green);
+}
+
+.dropdown .zoomMap {
+  display: none;
+}
+
+/* ---------- modal ---------- */
+#btnSay {
+  margin-top: 10%;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: calc(var(--vh, 1vh) * 100);
+  /* Full height */
+  overflow: hidden;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  z-index: 1000;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 75%;
+  /* Could be more or less, depending on screen size */
+  height: calc(var(--vh, 1vh) * 80);
+  border-radius: 25px;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+
+.postForm {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+
+.postForm h2,
+.postForm input,
+.postForm button,
+.postForm textarea {
+  display: block;
+  margin: 0 auto;
+}
+
+.postForm h2 {
+  text-align: center;
+  color: var(--camino-green);
+  font-size: 1.8em;
+}
+
+.postForm input {
+  border-radius: 25px;
+  border-color: var(--camino-green);
+  width: 90%;
+  padding: 2% 3%;
+  margin-top: 3%;
+}
+
+.demo-text {
+  width: 90%;
+  margin: 0 auto;
+  text-align: right;
+  margin-bottom: 3%;
+}
+
+.postForm .formText {
+  border-radius: 25px;
+  border: solid 2px;
+  border-color: var(--camino-green);
+  padding: 2% 3%;
+  text-align: left;
+  margin-top: 3%;
+  font-family: 'JosefinSans';
+  width: 90%;
+}
+
+.postForm .formText:focus,
+.secondary:focus {
+  outline: none;
+}
+
+.postForm .btnCreate {
+  text-align: center;
+  color: var(--text-color-light);
+  background-color: var(--camino-blue);
+  border-radius: 25px;
+  width: 50%;
+  margin-bottom: 1em;
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 2% 7%;
+}
+
+.postForm input[type=file] {
+  display: none;
+}
+
+.postForm input:focus {
+  outline: 0;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.image-preview {
+  max-width: 350px;
+  width: 50%;
+  padding: 1em 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.div-image-preview {
+  width: 100%;
+}
+
+form button {
+  font-weight: 200;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  padding: 12px 15px;
+  font-size: 1em;
+  border-radius: 25px;
+  color: var(--text-color-light);
+  background-color: var(--camino-green);
+  width: 100%;
+  max-width: 350px;
+  margin-top: 3%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ---------- images popup styling ---------- */
+/* The expanding image container (positioning is needed to position the close button and the text) */
+.imagePopup {
+  position: fixed;
+  display: none;
+  top: calc(var(--vh, 1vh) * 45);
+  left: 0;
+  width: 90vw;
+  height: calc(var(--vh, 1vh) * 55);
+  background-color: rgba(0, 0, 0, 0.662);
+  z-index: 2;
+}
+
+.container {
+  position: relative;
+  top: 15%;
+  left: 0;
+  width: 100%;
+}
+
+.imagePopup .container img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Expanding image text */
+#imgtext {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.5em;
+  display: block;
+}
+
+/* Closable button inside the image */
+.closebtn {
+  position: absolute;
+  top: 2%;
+  left: 90%;
+  color: white;
+  font-size: 75px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* ---------- leaflet controle styling ---------- */
+.leaflet-container .leaflet-control-attribution {
+  font-size: calc(var(--vh, 1vh) * .9);
+}
+
+.leaflet-control-layers-toggle:after {
+  content: "Find faciliteter på kortet";
+  font-family: 'JosefinSans', Arial, sans-serif;
+  font-size: calc(var(--vh, 1vh) * 2);
+  padding-left: .5em;
+  color: #000;
+}
+
+.leaflet-control-layers-toggle {
+  border-radius: 5px;
+  width: 40vw !important;
+  background-position: 1vw 50%;
+  padding-left: 36px;
+  text-decoration: none;
+  background-color: var(--camino-blue-transpartent);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.leaflet-control-layers-expanded {
+  width: 50vw !important;
+  background-color: var(--camino-blue-transpartent);
+}
+
+.leaflet-control-layers-expanded label div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  width: 110%;
+}
+
+.leaflet-control-layers-expanded label div span {
+  padding: 0;
+  margin: .2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  background-color: transparent;
+}
+
+.leaflet-control-layers-expanded label div span div {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  width: 45%;
+  height: auto;
+}
+
+.leaflet-control-layers-expanded label div span div img {
+  margin: 0 3%;
+  width: 25%;
+}
+
+.leaflet-control-layers-expanded label div span p {
+  color: var(--camino-blue);
+  font-family: 'JosefinSans', Arial, sans-serif;
+  font-size: calc(var(--vh, 1vh) * 2.1);
+  width: 45%;
+  cursor: pointer;
+}
+
+.leaflet-control-layers-base {
+  color: var(--camino-blue);
+  font-family: 'JosefinSans', Arial, sans-serif;
+  font-size: calc(var(--vh, 1vh) * 2.1);
+  width: 120%;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.leaflet-control-layers-base label {
+  width: 49%;
+}
+
+.leaflet-popup-content p {
+  color: var(--camino-blue);
+}
+
+.leaflet-popup-content img {
+  max-width: 100%;
+}
+
+.leaflet-control-container .leaflet-control-browser-print {
+  display: none;
+}
+
+.leaflet-bar-part {
+  background-image: url(images/ikoner/my-location.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+/* ------- Cluster ------*/
+.marker-cluster-small {
+  background-color: rgba(10, 71, 5, 0.589);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.marker-cluster-medium {
+  background-color: rgba(241, 211, 87, 0.6);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.marker-cluster-large {
+  background-color: rgba(10, 71, 5, 0.589);
+  border-radius: 50%;
+  text-align: center;
+}
+
+
+/* ---------- topbar styling ---------- */
+.topbar {
+  background-color: var(--green);
+  color: var(--text-color-light);
+  padding: 13.5px;
+  text-transform: uppercase;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-weight: 300;
+}
+
+#navbar {
+  width: 95%;
+  margin: 0 auto;
+}
+
+#navbar ul {
+  list-style-type: none;
+}
+
+#navbar li {
+  float: right;
+  padding: 5% 5% 0 0;
+  font-size: 0.9em;
+}
+
+#navbar a {
+  display: block;
+  color: var(--camino-blue);
+}
+
+#navbar li a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- tabbar styling ---------- */
+.tabbar {
+  background-color: var(--camino-green);
+  position: fixed;
+  height: calc(var(--vh, 1vh) * 9);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style the links inside the navigation bar */
+.tabbar a {
+  display: inline-block;
+  color: var(--text-color-light);
+  text-align: center;
+  padding: calc(var(--vh, 1vh) * 2);
+  text-decoration: none;
+  font-size: calc(var(--vh, 1vh) * 2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 33vw;
+}
+
+.tabbar img {
+  height: calc(var(--vh, 1vh) * 3);
+  display: block;
+  margin: 0 auto calc(var(--vh, 1vh) * 1);
+}
+
+/* Add a color to the active/current link */
+.tabbar a.active {
+  color: var(--camino-yellow);
+}
+
+.tabbar img {
+  fill: var(--camino-yellow);
+}
+
+@media only screen and (min-width: 500px) {
+  .navigationEtape {
+    width: 10vw;
+  }
+
+  .tabNav {
+    font-size: calc(var(--vh, 1vh) * 1.7);
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  #frontpageLogo {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  #frontpageImage {
+    background-image: url(images/lake-tablet.jpg);
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  
+  /* ---------- Navbar ---------- */
+  #navbar {
+    width: 100%;
+    margin-bottom: -10%;
+  }
+  
+  #navbar ul {
+    list-style-type: none;
+  }
+  
+  #navbar li {
+    float: right; margin-right: 2%;
+    padding: 2% 2% 0 0;
+    font-size: 1.2em;
+  }
+  
+  #navbar a {
+    display: block;
+    color: var(--text-color-light);
+  }
+  
+  #navbar li a:hover {
+    text-decoration: underline;
+  }
+
+  /* -------------------- */
+  
+  #frontpageImage {
+    background-image: url(images/lake.jpg);
+  }
+
+  #frontpageSection .arrow {
+    opacity: .2;
+    position: absolute;
+    height: calc(var(--vh, 1vh) * 10);
+    overflow: visible;
+  }
+
+  #frontpageSection {
+    margin-bottom: 0;
+  }
+
+  #mapid {
+    width: 90vw;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+  }
+
+  .maparea {
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  #grid-posts {
+    position: absolute;
+    overflow-y: scroll;
+    overflow-x: visible;
+    right: 3em;
+    margin-top: calc(var(--vh, 1vh) *5);
+    width: 30vw;
+  }
+
+  #frontpageImage h2 {
+    font-size: calc(var(--vh, 1vh) * 4);
+  }
+
+  .tabbar {
+    display: none;
+  }
+
+  .page {
+    display: block;
+  }
+
+  .imagePopup {
+    top: 0;
+    width: 50vw;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .container {
+    top: 25%;
+  }
+
+  .dropdown .zoomMap {
+    display: block;
+  }
+
+  aside h3 {
+    font-size: calc(var(--vh, 1vh) * 3);
+  }
+
+  #logoDark {
+    height: calc(var(--vh, 1vh) * 12);
+    margin: 3vh auto 0;
+    cursor: pointer;
+    display: block;
+  }
+
+  .grid-item {
+    margin: 1em;
+  }
+
+  .tabNav {
+    font-size: 0.9em;
+    font-weight: 1000;
+  }
+
+  /* --------------------- Frontpage -------------------*/
+  #frontpageImage {
+    width: 90vw;
+    height: calc(var(--vh, 1vh) * 70);
+    background-position: 50% 85%;
+  }
+
+  #frontpageLogoDiv {
+    width: 30%;
+    margin-left: 5%;
+    margin-top: calc(var(--vh, 1vh) * 10);
+  }
+
+  #frontpageLogo {
+    width: 90%;
+  }
+
+  #frontpageTextDiv {
+    width: 60%;
+    margin: 23% 0 0 2.5%;
+    text-align: left;
+  }
+
+  #frontpageImage h1 {
+    font-size: calc(var(--vh, 1vh) * 10);
+  }
+
+  #content {
+    width: 90vw;
+    overflow: visible;
+  }
+
+  #frontpageSection {
+    width: 90vw;
+    height: calc(var(--vh, 1vh) * 30);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+    background-color: var(--camino-green);
+  }
+
+  #frontpageSection div {
+    width: 26%;
+    margin: 0 2%;
+  }
+
+  #frontpageSection h2 {
+    height: calc(var(--vh, 1vh) * 5);
+  }
+
+  #frontpageSection p {
+    height: calc(var(--vh, 1vh) * 16);
+    overflow-y: auto;
+  }
+
+  #frontpageSection img {
+    height: calc(var(--vh, 1vh) * 3);
+  }
+
+  /* --------------------- Leaflet (map controls) -------------------*/
+  .leaflet-control-layers-toggle {
+    width: 13vw !important;
+    border: 2px solid var(--camino-blue);
+  }
+
+  .leaflet-control-layers-toggle:after {
+    font-size: 1.2em;
+
+  }
+
+  .leaflet-control-layers-expanded {
+    width: 20vw !important;
+  }
+
+  .leaflet-control-layers-expanded label div span p,
+  .leaflet-control-layers-base {
+    font-size: 1.2em;
+  }
+
+  .leaflet-control-layers-expanded label div span {
+    width: 82%;
+  }
+
+  .leaflet-control-locate {
+    display: none;
+  }
+
+
+  .leaflet-control-container .leaflet-control-browser-print {
+    display: flex;
+  }
+
+  /* ---------- modal ---------- */
+
+  #btnSay {
+    margin-top: 10%;
+  }
+
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: calc(var(--vh, 1vh) * 100);
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    z-index: 1000;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 75%;
+    /* Could be more or less, depending on screen size */
+    height: calc(var(--vh, 1vh) * 65);
+    border-radius: 25px;
+    overflow-y: scroll;
+    overflow-x: visible;
+  }
+
+  .postForm {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+  }
+
+
+  .postForm h2,
+  .postForm input,
+  .postForm button,
+  .postForm textarea {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .postForm h2 {
+    text-align: center;
+    color: var(--camino-green);
+  }
+
+  .postForm input {
+    border-radius: 25px;
+    border-color: var(--camino-green);
+    width: 60%;
+    padding: 2% 3%;
+    margin-top: 3%;
+  }
+
+  .demo-text {
+    width: 62%;
+    margin: 0 auto;
+    text-align: right;
+    margin-bottom: 3%;
+  }
+
+  .postForm .formText {
+    border-radius: 25px;
+    border: solid 2px;
+    border-color: var(--camino-green);
+    padding: 2% 3%;
+    text-align: left;
+    margin-top: 3%;
+    font-family: 'JosefinSans';
+    width: 60%;
+  }
+
+  .postForm .formText:focus,
+  .secondary:focus {
+    outline: none;
+  }
+
+  .postForm .btnCreate {
+    text-align: center;
+    color: var(--text-color-light);
+    background-color: var(--camino-blue);
+    border-radius: 25px;
+    width: 20%;
+    margin-bottom: 1em;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 2% 7%;
+  }
+
+  .postForm input[type=file] {
+    display: none;
+  }
+
+  .postForm input:focus {
+    outline: 0;
+  }
+
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .image-preview {
+    max-width: 350px;
+    width: 50%;
+    padding: 1em 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .div-image-preview {
+    width: 100%;
+  }
+
+  form button {
+    font-weight: 200;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    padding: 12px 15px;
+    font-size: 1em;
+    border-radius: 25px;
+    color: var(--text-color-light);
+    background-color: var(--camino-green);
+    width: 100%;
+    max-width: 350px;
+    margin-top: 3%;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
